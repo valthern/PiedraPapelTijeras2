@@ -82,14 +82,90 @@ using PiedraPapelTijeras.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\imartinez\source\repos\PiedraPapelTijeras\PiedraPapelTijeras\Pages\Index.razor"
+using System.Timers;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 20 "C:\Users\imartinez\source\repos\PiedraPapelTijeras\PiedraPapelTijeras\Pages\Index.razor"
+       
+    List<Jugada> jugadas = new List<Jugada>
+{
+        new Jugada{Imagen="piedra.jpg",OptionPPT=OptionPPT.Piedra,VenceA=OptionPPT.Tijeras,PierdeContra=OptionPPT.Papel},
+        new Jugada{Imagen="tijeras.jpg",OptionPPT=OptionPPT.Tijeras,VenceA=OptionPPT.Papel,PierdeContra=OptionPPT.Piedra},
+        new Jugada{Imagen="papel.jpg",OptionPPT=OptionPPT.Papel,VenceA=OptionPPT.Piedra,PierdeContra=OptionPPT.Tijeras}
+    };
+
+    Jugada jugadaOponente;
+
+    Timer timer;
+
+    protected override void OnInitialized()
+    {
+        timer = new Timer();
+        timer.Interval = 500;
+        timer.Elapsed += TimerOnElapsed;
+        timer.Start();
+    }
+
+    int indiceJugadaOponente = 0;
+
+    private void TimerOnElapsed(object sender, ElapsedEventArgs e)
+    {
+        indiceJugadaOponente = (indiceJugadaOponente + 1) % jugadas.Count;
+        jugadaOponente = jugadas[indiceJugadaOponente];
+        StateHasChanged();
+    }
+
+    class Jugada
+    {
+        public OptionPPT OptionPPT { get; set; }
+        public OptionPPT VenceA { get; set; }
+        public OptionPPT PierdeContra { get; set; }
+        public string Imagen { get; set; }
+
+        public EstatusJuego JungarContra(Jugada jugada)
+        {
+            if (OptionPPT == jugada.OptionPPT)
+            {
+                return EstatusJuego.Empate;
+            }
+
+            if (VenceA == jugada.OptionPPT)
+            {
+                return EstatusJuego.Victoria;
+            }
+
+            return EstatusJuego.Derrota;
+        }
+    }
+
+    enum OptionPPT { Piedra, Papel, Tijeras }
+
+    enum EstatusJuego { Victoria, Derrota, Empate }
+
+    public void Dispose()
+    {
+        if (timer != null)
+        {
+            timer.Dispose();
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

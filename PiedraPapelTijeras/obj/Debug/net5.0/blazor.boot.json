@@ -195,11 +195,11 @@
       "mscorlib.dll": "sha256-9AZ7YsJz\/p2gr4E0EQXdHBqwDxoXqtzxhqC6aRsa2K8=",
       "netstandard.dll": "sha256-yOOty6BTX3e57YAEHK5a4nku\/lj0vi7jg\/eQZAjbDQk=",
       "System.Private.CoreLib.dll": "sha256-rraBQp6NevIQiELPVfDFDl5pv9QVJqCiZhB5bkpiZ88=",
-      "PiedraPapelTijeras.dll": "sha256-tBjuLWLsTPXT9G9ohyCSzAf5u7I+JR2iyM5J6QP6jKw="
+      "PiedraPapelTijeras.dll": "sha256-RI9D3Q6GpIygDJNO9vStHXMf4SgEpO3rC9Xh\/oV46SY="
     },
     "lazyAssembly": null,
     "pdb": {
-      "PiedraPapelTijeras.pdb": "sha256-4fuDmvfoy2ZECNzpKcbkKicwESdReT54gqBcZKlP2c0="
+      "PiedraPapelTijeras.pdb": "sha256-EeFIcS5OBvRpVoElx5nwxYmF4rWcXtA09iIrBUSlM08="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-L2vkcKzmXJtf+J7db5TbDMBckrgqJ5qc0ZzVIdRlm0I=",
